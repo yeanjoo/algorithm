@@ -1,10 +1,51 @@
 #include <iostream>
 #include <vector>
-
+#include<utility>
+#include<queue>
+#define SIZE 5
 #define INF 987654321
 
 using namespace std;
+/*우선순위 큐를 이용한 다익스트라*/
+vector<pair<int,int>> adj[SIZE];
+int tree[SIZE][SIZE]= {{0,1,3,INF,INF},
+                       {1,0,3,6,INF},
+                       {3,3,0,4,2},
+                       {INF,6,4,0,5},
+                       {INF,INF,2,5,0}};
 
+vector<int> dijkstra(int start){
+
+    vector<int> dist(SIZE,INF);//초기에 인식되지 않은 노드사이의 거리임으로 INF (인식된 노드)
+    dist[start]=0; // 시작점은 0으로 초기화 한다.
+
+    priority_queue<pair<int,int>> pq;
+
+    pq.push(make_pair(0,start));
+
+    while(!pq.empty()){
+        //우선순위 큐에 음의 가중치로 입력되어 있으므로 양으로 변환
+        int cost = pq.top().first;
+        int here = pq.top().second;
+        pq.pop();
+
+        if(dist[here]<cost) continue; //작은 값 존재시 무시
+
+        //dist 인접한 노드를 검사 tree 선택 된 노드의 모든 노드를 검사
+        for(int i=0;i<SIZE;i++){
+            int there =i;
+            int nextDist =cost+graph[here][i];
+
+            if(dist[there]>nextDist){ // 더 짧은 경로를 발견하면 , dist[]를 갱신하고 우선순위 큐에 넣는다.
+                dist[there]= nextDist;
+                pq.push(make_pair(nextDist,there));
+            }
+        }
+    }
+    return dist;
+}
+
+/*우선순위 큐를 사용하지 않은 다익스트라*/
 int V, E, K; // 정점의 수, 간선의 수, 시작 정점 번호
 
 vector<vector<int>> graph; // 간선 가중치. 그래프의 인접 리스트.
@@ -53,6 +94,7 @@ vector<int> dijkstra()
     }
     return d;
 }
+
 int main()
 {
     cin>>V>>E;
