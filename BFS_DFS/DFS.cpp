@@ -21,5 +21,4 @@ void DFS(list<int> graph[], int v, stack<int> st){
         }
         visited[t-1]=true;
     }
-    
 }

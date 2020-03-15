@@ -15,6 +15,7 @@ void greedy_coin(int price, int count[]){
     }
     
 }
+
 int main(){
     int count[N];
     int price =75;
