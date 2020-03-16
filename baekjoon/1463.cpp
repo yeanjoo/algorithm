@@ -1,17 +1,17 @@
 #include<iostream>
-#define INF 9999999999
-// #define THREE 3
-// #define TWO 2
-int array[]={2,3};
-
+#include<vector>
 using namespace std;
 
+int array[]={2,3};
+
+
 int dp(int N){
-    int dp[N];
+    vector<int> dp(1000000);
+    
     
     for(int i=0;i<N;i++){
         dp[i]=i;
-    }//ÃÊ±âÈ­
+    }//???
 
     for(int i=0;i<2;i++){
         for(int j=array[i];j<N;j++){
@@ -22,8 +22,8 @@ int dp(int N){
     cout<<dp[N-1];   
 }
 
-void main(){
+int main(){
     int N;
-    cin>>N;
     dp(N);
+    return 0;
 }
