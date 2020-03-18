@@ -13,6 +13,7 @@ int array[SIZE][SIZE]={
 int dp[SIZE][1<<SIZE];
 
 int TSP_DP(int cur, int visited){
+    cout<<" HI ";
     if(visited ==(1<<SIZE)-1) return array[cur][0];
     int &cost =dp[cur][visited];
     if(cost !=0) return cost;
@@ -24,4 +25,8 @@ int TSP_DP(int cur, int visited){
         cost=min(cost,TSP_DP(i,visited | (1<<i)+array[cur][i]));
     }
     return cost;
+}
+
+int main(){
+    cout<<TSP_DP(0,0);
 }

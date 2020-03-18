@@ -43,5 +43,5 @@ int main(){
     vector<int> v;
     v.push_back(0);
     bool visited[]={true,false,false,false,false};
-    TSP(v,visited,0);
+    cout<<TSP(v,visited,0);
     }
