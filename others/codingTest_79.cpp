@@ -27,7 +27,7 @@ bool search(int S, int N, vector<int> V){
             V.pop_back();
           //  cout<<endl<<"나가는 수 : "<<next<<endl;
             //visited[next]=false;
-           // S-=array[next];<<?? 이걸 왜 안넣어도 되는 거지
+           // S-=array[next];<<?? 이걸 왜 안넣어도 되는거지
             
      //   } 
         if(S==N){   
