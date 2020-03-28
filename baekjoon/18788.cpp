@@ -5,28 +5,35 @@
 using namespace std;
 
 int swapity_swap(int N,int K, int A1,int A2,int B1,int B2){
-    vector<int> V;
-    int array[]={A1,A2,B1,B2};
+    int V[N];
+   // int temp;
     int time=K%3;
-    sort(array,array+4);
-
-// DC BA EF ,  DC FE AB ,  EF CD AB , EF BA DC  , AB FE DC  , AB CD EF ??? 3?
+    //int array[6];
+    for(int i=0;i<N;i++) V[i]=i+1; //ÃÊ±âÈ­
+    
+    // if(B1<=A2 && B2>A2){
+    //    temp = A2-A1;
+    //   int array[]={A1,A1+temp,B1,A2,B2-temp,B2};//±¸°£
+    // }
+    // else if(A1<=B2 && A2>B2){
+    //    temp = B2 -A1;
+    //  int array[]={B1,B1+temp,A1,B2,A2-temp,A2};
+    //  }
+// //DC BA EF ,  DC FE AB ,  EF CD AB , EF BA DC  , AB FE DC  , AB CD EF ??? 3?
 //DC FE AB  , EF BA DC , AB CD EF
-if(B1<=A2||A1<=B2){
-    if(time==1){
-        //print array[2]->array[1]->array[3]->array[2]->array[0]-> array[1]
-    };
-    if(time==2){
-        //print array[2]->array[3]->array[1]->array[0]->array[2]-> array[1]
-    };
-    else {
-            //??????
+if((B1<=A2 && B2>A2)||(A1<=B2 && A2>B2)){
+    for(int i=0;i<time;i++){
+        reverse(V+A1,V+A2+1);
+        reverse(V+B1,V+B2+1);
     }
-} //???? ? ??
-//else if(A2<B1||B2<A2) //???? ?? ? ???? ?? ?? ?? ?? ???? ????
-//else < // ??? ??? ?? ??? ? ?? ???? ??? ????  ??? ????
-    
-    
+} //°ãÄ¥ ¶§
+else{
+    for(int i=0;i=K%2;i++){
+        reverse(V+A1,V+A2);
+        reverse(V+B1,V+B2); 
+    }
+}
+
     /* for(int i=0;i<N;i++){
     //     V[i]=i+1;
     // }
@@ -37,6 +44,9 @@ if(B1<=A2||A1<=B2){
     // }
     //PRINT
 */
+    for(int i=0;i<N;i++){
+        cout<<V[i]<<" ";
+    }
 }
 int main(){
    // clock_t begin,end;
