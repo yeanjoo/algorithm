@@ -7,7 +7,7 @@ using namespace std;
 int swapity_swap(int N,int K, int A1,int A2,int B1,int B2){
     int V[N];
    // int temp;
-    int time=K%3;
+    //int time=K%3;
     //int array[6];
     for(int i=0;i<N;i++) V[i]=i+1; //ÃÊ±âÈ­
     
@@ -22,9 +22,9 @@ int swapity_swap(int N,int K, int A1,int A2,int B1,int B2){
 // //DC BA EF ,  DC FE AB ,  EF CD AB , EF BA DC  , AB FE DC  , AB CD EF ??? 3?
 //DC FE AB  , EF BA DC , AB CD EF
 if((B1<=A2 && B2>A2)||(A1<=B2 && A2>B2)){
-    for(int i=0;i<time;i++){
-        reverse(V+A1,V+A2+1);
-        reverse(V+B1,V+B2+1);
+    for(int i=0;i<K%3;i++){
+        reverse(V+A1,V+A2);
+        reverse(V+B1,V+B2);
     }
 } //°ãÄ¥ ¶§
 else{
@@ -45,7 +45,7 @@ else{
     //PRINT
 */
     for(int i=0;i<N;i++){
-        cout<<V[i]<<" ";
+        cout<<V[i]<<"\n";
     }
 }
 int main(){
@@ -53,7 +53,7 @@ int main(){
    // begin= clock();
     int N,K,A1,A2,B1,B2;
     cin>>N>>K>>A1>>A2>>B1>>B2;
-    swapity_swap(N,K,A1-1,A2-1,B1-1,B2-1);
+    swapity_swap(N,K,A1-1,A2,B1-1,B2);
      //end= clock();
     // cout<<"¼öÇà½Ã°£ "<<((end-begin)/CLOCKS_PER_SEC)<<endl;7 2
 }
