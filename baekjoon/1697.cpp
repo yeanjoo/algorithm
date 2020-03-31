@@ -3,45 +3,44 @@
 //#include<bitset>
 #define SIZE 100001
 using namespace std;
-int BFS(int S, int N){
-    int  time=0;
+    int visited[SIZE]={0, };
+
+void BFS(int S, int N){
+    //int  time=0;
     queue<int> q;
     //bitset <SIZE> visited;
-    bool visited[SIZE]={0, };
     
     //visited.reset();//√ ±‚»≠
-    q.push(N);
+    q.push(S);
+    visited[S]=1;
 
     while(!q.empty()){
-        int cur =q.front();
-        q.pop();
+        int cur =q.front(); q.pop();
 
-        if(S==cur) return time;
-
-        if(cur+1 < SIZE && visited[cur+1] == false){/*!visited.test(cur)*/
-
-            visited[cur+1] = true;
-            q.push(cur+1);
-        }
-
-        if(cur-1 > -1 && visited[cur-1] == false){
+        if(N==cur) cout<<visited[cur]-1;
+        
+        if(cur-1 > -1 && visited[cur-1] == 0){
             //visited|=1<<(cur-1);
-            visited[cur-1] = true;
+            visited[cur-1] = visited[cur]+1;
             q.push(cur-1);
         }
 
-        if(cur*2 < SIZE && visited[cur*2] == false){
+        if(cur+1 < SIZE && visited[cur+1] == 0){/*!visited.test(cur)*/
+
+            visited[cur+1] = visited[cur]+1;
+            q.push(cur+1);
+        }
+
+        if(cur*2 < SIZE && visited[cur*2] == 0){
            //visited|=1<<(2*cur);
-           visited[cur*2] = true;
+           visited[cur*2] = visited[cur]+1;
            q.push(2*cur);
         }
-        time++;
     }
-    return time;
 }
 
 int main(){
     int S,N;
     cin>>S>>N;
-    cout<<BFS(S,N);
+    BFS(S,N);
 }

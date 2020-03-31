@@ -2,15 +2,16 @@
 #include<queue>
 #include<bitset>
 using namespace std;
-#define SIZE 100000
+#define SIZE 100001
 int array[]={2,3};
 
 
 int dp(int N){
-/*    int dp[100000];
+    
+   //long long dp[SIZE];
     
     
-    for(int i=0;i<N;i++){
+    /*for(int i=0;i<N;i++){
         dp[i]=i;
     }
 
@@ -19,8 +20,9 @@ int dp(int N){
             dp[j]=min(dp[j],dp[j-array[i]]+1);
         }
         
-    }
-    cout<<dp[N-1];  */ 
+    }*/
+   // cout<<dp[N-1];
+
     int  time=0;
     queue<int> q;
     bitset <SIZE> visited;
@@ -33,7 +35,7 @@ int dp(int N){
         int cur =q.front();
         q.pop();
 
-        if(1==cur) return time;
+        if(1==cur) cout<<visited[cur]-1;
 
         if(cur/2 > -1 && !visited.test(cur)){
             visited|=1<<(cur/2);
@@ -57,6 +59,6 @@ int dp(int N){
 int main(){
     int N;
     cin>>N;
-    cout<<dp(N);
+    dp(N);
     return 0;
 }
