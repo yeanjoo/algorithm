@@ -5,7 +5,7 @@ using namespace std;
 #define SIZE 1000001
 
 int dp(int N){
-      int dp[N+1];
+      int *dp = new int[N]; //동적할당 사용하기
       dp[0]=dp[1]=0;
       int count=0;
       for(int i=1;i<N;i++){
@@ -21,6 +21,7 @@ int dp(int N){
               dp[i]=min(dp[i],dp[i/3]+1);
           }
       } 
+      delete[] dp;
       return dp[N];
 }
 
